@@ -10,44 +10,42 @@ import static org.junit.jupiter.api.Assertions.*;
 class ConflictoTest {
 
     @Test
-    public void testSetDescripcion(){
+    public void testSetDescripcion() {
         Conflicto conflicto = new Conflicto();
         conflicto.setDescripcion("Nueva Descripcion");
         assertEquals("Nueva Descripcion", conflicto.getDescripcion());
     }
 
     @Test
-    public void testSetDescripcionVacia(){
+    public void testSetDescripcionVacia() {
         Conflicto conflicto = new Conflicto();
         assertThrows(IllegalArgumentException.class, () -> conflicto.setDescripcion(""));
     }
 
     @Test
-    public void testSetDescripcionNula(){
+    public void testSetDescripcionNula() {
         Conflicto conflicto = new Conflicto();
         assertThrows(IllegalArgumentException.class, () -> conflicto.setDescripcion(null));
     }
 
     @Test
-    public void testSetFechaCreacion(){
+    public void testSetFechaCreacion() {
         Conflicto conflicto = new Conflicto();
         Date fechaAAsignar = new Date();
         conflicto.setFechaCreacion(fechaAAsignar);
         assertEquals(fechaAAsignar, conflicto.getFechaCreacion());
     }
+
     @Test
-    public void testSetFechaCreacionNula(){
+    public void testSetFechaCreacionNula() {
         Conflicto conflicto = new Conflicto();
         assertThrows(IllegalArgumentException.class, () -> conflicto.setFechaCreacion(null));
     }
 
     @Test
-    public void testSetAyerComoFechaCreacion(){
+    public void testSetAyerComoFechaCreacion() {
         Conflicto conflicto = new Conflicto();
         Date fechaHoy = new Date();
-
-
-
         Calendar fechaAyer = Calendar.getInstance();
         fechaAyer.setTime(fechaHoy);
         fechaAyer.add(Calendar.DAY_OF_MONTH, -1);
@@ -55,7 +53,7 @@ class ConflictoTest {
     }
 
     @Test
-    public void testSetManianaComoFechaCreacion(){
+    public void testSetManianaComoFechaCreacion() {
         Conflicto conflicto = new Conflicto();
         Date fechaHoy = new Date();
         Calendar fechaManiana = Calendar.getInstance();
