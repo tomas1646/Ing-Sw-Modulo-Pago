@@ -45,9 +45,7 @@ class ConflictoTest {
     @Test
     public void testSetAyerComoFechaCreacion() {
         Conflicto conflicto = new Conflicto();
-        Date fechaHoy = new Date();
         Calendar fechaAyer = Calendar.getInstance();
-        fechaAyer.setTime(fechaHoy);
         fechaAyer.add(Calendar.DAY_OF_MONTH, -1);
         assertThrows(IllegalArgumentException.class, () -> conflicto.setFechaCreacion(fechaAyer.getTime()));
     }
@@ -55,9 +53,7 @@ class ConflictoTest {
     @Test
     public void testSetManianaComoFechaCreacion() {
         Conflicto conflicto = new Conflicto();
-        Date fechaHoy = new Date();
         Calendar fechaManiana = Calendar.getInstance();
-        fechaManiana.setTime(fechaHoy);
         fechaManiana.add(Calendar.DAY_OF_MONTH, 1);
         assertThrows(IllegalArgumentException.class, () -> conflicto.setFechaCreacion(fechaManiana.getTime()));
     }
