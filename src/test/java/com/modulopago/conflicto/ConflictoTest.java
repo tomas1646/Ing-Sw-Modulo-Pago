@@ -1,5 +1,6 @@
 package com.modulopago.conflicto;
 
+import com.modulopago.ordendepago.OrdenDePago;
 import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
@@ -56,5 +57,12 @@ class ConflictoTest {
         Calendar fechaManiana = Calendar.getInstance();
         fechaManiana.add(Calendar.DAY_OF_MONTH, 1);
         assertThrows(IllegalArgumentException.class, () -> conflicto.setFechaCreacion(fechaManiana.getTime()));
+    }
+
+    @Test
+    public void testOrdenDePagoAsignada() {
+        OrdenDePago ordenDePago = new OrdenDePago();
+        Conflicto conflicto = new Conflicto(ordenDePago);
+        assertEquals(ordenDePago, conflicto.getOrdenDePago());
     }
 }

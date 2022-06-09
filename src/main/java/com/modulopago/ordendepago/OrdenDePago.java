@@ -8,6 +8,9 @@ public class OrdenDePago {
     private String numeroEnvio;
     private float monto;
 
+    public OrdenDePago(){
+
+    }
     public OrdenDePago(String numeroOrdenDePago, String numeroVenta, String numeroCliente, String numeroEnvio, float monto) {
         this.numeroOrdenDePago = numeroOrdenDePago;
         this.numeroVenta = numeroVenta;
