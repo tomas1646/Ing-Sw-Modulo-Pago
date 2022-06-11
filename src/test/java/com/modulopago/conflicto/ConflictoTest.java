@@ -8,7 +8,7 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ConflictoTest {
+public class ConflictoTest {
 
     @Test
     public void testSetDescripcion() {
