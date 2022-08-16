@@ -1,5 +1,8 @@
 package com.modulopago.conflicto;
 
+import com.modulopago.Cliente.Cliente;
+import com.modulopago.Envio.Envio;
+import com.modulopago.Venta.Venta;
 import com.modulopago.ordendepago.OrdenDePago;
 import org.junit.jupiter.api.Test;
 
@@ -61,7 +64,7 @@ public class ConflictoTest {
 
     @Test
     public void testOrdenDePagoAsignada() {
-        OrdenDePago ordenDePago = new OrdenDePago();
+        OrdenDePago ordenDePago = new OrdenDePago(new Venta(),new Cliente(),new Envio());
         Conflicto conflicto = new Conflicto(ordenDePago);
         assertEquals(ordenDePago, conflicto.getOrdenDePago());
     }
