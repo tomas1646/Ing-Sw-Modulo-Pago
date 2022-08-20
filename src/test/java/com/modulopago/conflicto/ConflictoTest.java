@@ -6,7 +6,6 @@ import com.modulopago.Venta.Venta;
 import com.modulopago.ordendepago.OrdenDePago;
 import org.junit.jupiter.api.Test;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,58 +13,28 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ConflictoTest {
 
     @Test
-    public void testSetDescripcion() {
-        Conflicto conflicto = new Conflicto();
-        conflicto.setDescripcion("Nueva Descripcion");
-        assertEquals("Nueva Descripcion", conflicto.getDescripcion());
+    public void testCrearConflictoDescripcionVacia() {
+        OrdenDePago ordenDePago = new OrdenDePago(new Venta(), new Cliente(), new Envio());
+        assertThrows(IllegalArgumentException.class, () -> new Conflicto(ordenDePago, ""));
     }
 
     @Test
-    public void testSetDescripcionVacia() {
-        Conflicto conflicto = new Conflicto();
-        assertThrows(IllegalArgumentException.class, () -> conflicto.setDescripcion(""));
+    public void testCrearConflictoDescripcionNula() {
+        OrdenDePago ordenDePago = new OrdenDePago(new Venta(), new Cliente(), new Envio());
+        assertThrows(IllegalArgumentException.class, () -> new Conflicto(ordenDePago, null));
     }
 
     @Test
-    public void testSetDescripcionNula() {
-        Conflicto conflicto = new Conflicto();
-        assertThrows(IllegalArgumentException.class, () -> conflicto.setDescripcion(null));
-    }
-
-    @Test
-    public void testSetFechaCreacion() {
-        Conflicto conflicto = new Conflicto();
-        Date fechaAAsignar = new Date();
-        conflicto.setFechaCreacion(fechaAAsignar);
-        assertEquals(fechaAAsignar, conflicto.getFechaCreacion());
-    }
-
-    @Test
-    public void testSetFechaCreacionNula() {
-        Conflicto conflicto = new Conflicto();
-        assertThrows(IllegalArgumentException.class, () -> conflicto.setFechaCreacion(null));
-    }
-
-    @Test
-    public void testSetAyerComoFechaCreacion() {
-        Conflicto conflicto = new Conflicto();
-        Calendar fechaAyer = Calendar.getInstance();
-        fechaAyer.add(Calendar.DAY_OF_MONTH, -1);
-        assertThrows(IllegalArgumentException.class, () -> conflicto.setFechaCreacion(fechaAyer.getTime()));
-    }
-
-    @Test
-    public void testSetManianaComoFechaCreacion() {
-        Conflicto conflicto = new Conflicto();
-        Calendar fechaManiana = Calendar.getInstance();
-        fechaManiana.add(Calendar.DAY_OF_MONTH, 1);
-        assertThrows(IllegalArgumentException.class, () -> conflicto.setFechaCreacion(fechaManiana.getTime()));
+    public void testGetFechaCreacion() {
+        OrdenDePago ordenDePago = new OrdenDePago(new Venta(), new Cliente(), new Envio());
+        Conflicto conflicto = new Conflicto(ordenDePago, "Descripcion");
+        assertEquals(Date.class, conflicto.getFechaCreacion().getClass());
     }
 
     @Test
     public void testOrdenDePagoAsignada() {
-        OrdenDePago ordenDePago = new OrdenDePago(new Venta(),new Cliente(),new Envio());
-        Conflicto conflicto = new Conflicto(ordenDePago);
+        OrdenDePago ordenDePago = new OrdenDePago(new Venta(), new Cliente(), new Envio());
+        Conflicto conflicto = new Conflicto(ordenDePago, "Descripcion");
         assertEquals(ordenDePago, conflicto.getOrdenDePago());
     }
 }
